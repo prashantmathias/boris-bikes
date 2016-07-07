@@ -1,11 +1,5 @@
 require "./lib/docking_station.rb"
 
-station = DockingStation.new
+docking_station = DockingStation.new
 
-bike = Bike.new
-
-bike2 = Bike.new
-
-station.dock(bike)
-
-station.dock(bike2)
+20.times { docking_station.dock(Bike.new) }
