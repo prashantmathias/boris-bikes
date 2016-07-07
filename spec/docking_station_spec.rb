@@ -37,6 +37,18 @@ describe DockingStation do
       DockingStation::DEFAULT_CAPACITY.times { subject.dock(bike) }
       expect { subject.dock(bike) }.to raise_error("docking station full")
     end
+  end
 
+  context "capacity" do
+
+    it "can be changed on initialize" do
+      station = DockingStation.new(30)
+      expect(station.capacity).to eq 30
+    end
+
+    it "should default to 20" do
+      expect(subject.capacity).to eq 20
+
+    end
   end
 end
