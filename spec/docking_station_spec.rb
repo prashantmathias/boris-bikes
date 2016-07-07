@@ -14,14 +14,14 @@ describe DockingStation do
       bike = Bike.new
       subject.dock(bike)
       expect(subject.release_bike).to eq bike
-      expect(bike).to be_working
+      expect(bike.working).to be true
     end
   end
 
   context "docking the bike" do
 
-    it "should respond to 'dock'" do
-      expect(subject).to respond_to(:dock).with(1).argument
+    it "should respond to 'dock' and check status" do
+      expect(subject).to respond_to(:dock).with(2).argument
       #bike = [Bike.new]
       #expect(subject.dock(bike)).to eq bike
     end
@@ -36,6 +36,12 @@ describe DockingStation do
       bike = Bike.new
       DockingStation::DEFAULT_CAPACITY.times { subject.dock(bike) }
       expect { subject.dock(bike) }.to raise_error("docking station full")
+    end
+
+    it "should be able to report the bike as not woring" do
+      bike = Bike.new
+      subject.dock(bike, false)
+      expect(bike.working).to eq false
     end
   end
 
