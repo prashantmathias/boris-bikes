@@ -2,8 +2,7 @@ require_relative 'bike'
 
 class DockingStation
   DEFAULT_CAPACITY = 20
-  attr_accessor :bikes
-  attr_accessor :capacity
+  attr_accessor :bikes, :capacity
 
   def initialize(capacity = DEFAULT_CAPACITY)
     $bikes = []
@@ -20,6 +19,10 @@ class DockingStation
   def dock(bike)
     fail "docking station full" if full?
     $bikes << bike
+  end
+
+  def add_fixed_bikes
+    $bikes << $fixed_bikes
   end
 
   private
