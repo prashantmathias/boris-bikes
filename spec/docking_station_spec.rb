@@ -27,28 +27,31 @@ describe DockingStation do
     end
 
     it "should be able to see the bike" do
-      bike = [Bike.new]
+      bike = [double(:bike)]
       subject.dock(bike[0])
       expect(subject.bikes).to eq bike
     end
 
     it "should raise an error when the docking station is full" do
-      bike = Bike.new
-      DockingStation::DEFAULT_CAPACITY.times { subject.dock(bike) }
-      expect { subject.dock(bike) }.to raise_error("docking station full")
+      #bike = Bike.new
+      DockingStation::DEFAULT_CAPACITY.times { subject.dock(double(:bike)) }
+      expect { subject.dock(double(:bike)) }.to raise_error("docking station full")
     end
 
-
+    #let(:bike) { double(:bike) }
     it "should not release broken bikes" do
-      bike = Bike.new
-      bike.report_broken
+      #bike = Bike.new
+      #bike.report_broken
+      #allow(bike).to receive(:broken?).and_return(true)
+      bike = double(:bike, broken?: true)
       subject.dock(bike)
       expect { subject.release_bike }.to raise_error("Bike is broken")
     end
 
     it "should accept all bikes regardless of bike condition" do
-      bike = Bike.new
-      bike.report_broken
+      #bike = Bike.new
+      #bike.report_broken
+      bike = double(:bike, broken?: true)
       subject.dock(bike)
       expect(subject.bikes.length).to eq 1
     end
