@@ -27,7 +27,7 @@ describe DockingStation do
     end
 
     it "should be able to see the bike" do
-      bike = [double(:bike)]
+      bike = [Bike.new]
       subject.dock(bike[0])
       expect(subject.bikes).to eq bike
     end
@@ -49,9 +49,9 @@ describe DockingStation do
     end
 
     it "should accept all bikes regardless of bike condition" do
-      #bike = Bike.new
-      #bike.report_broken
-      bike = double(:bike, broken?: true)
+      bike = Bike.new
+      bike.report_broken
+      #bike = double(:bike, broken?: true)
       subject.dock(bike)
       expect(subject.bikes.length).to eq 1
     end
@@ -67,7 +67,6 @@ describe DockingStation do
 
     it "should default to 20" do
       expect(subject.capacity).to eq 20
-
     end
   end
 end

@@ -10,6 +10,6 @@ describe Bike do
     expect(subject).to be_broken #expect(Bike.new).to be_broken(broken?)
   end
 
-
+  
 
 end

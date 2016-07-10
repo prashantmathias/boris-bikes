@@ -1,5 +1,19 @@
-require "./lib/docking_station.rb"
+require "./lib/garage.rb"
 
-docking_station = DockingStation.new
+station = DockingStation.new
 
-20.times { docking_station.dock(Bike.new) }
+garage = Garage.new
+
+bike = Bike.new
+
+bike.report_broken
+
+station.dock(bike)
+
+station.bikes
+
+garage.take_broken_bikes
+
+garage.broken_bikes
+
+print garage.fixed_bikes

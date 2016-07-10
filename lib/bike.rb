@@ -1,5 +1,5 @@
 class Bike
-  attr_accessor :working
+  attr_accessor :working, :report_broken
 
   def initialize
     @working = true
@@ -11,6 +11,14 @@ class Bike
 
   def broken?
     @broken
+  end
+
+  def report_fixed
+    @fixed = true
+  end
+
+  def fixed?
+    @fixed
   end
 
 end
