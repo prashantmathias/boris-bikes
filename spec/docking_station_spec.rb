@@ -11,7 +11,7 @@ describe DockingStation do
     end
 
     it "should release a bike which has been docked before" do
-      bike = Bike.new
+      bike = double(:bike, broken?: false, working: true) #Bike.new
       subject.dock(bike)
       expect(subject.release_bike).to eq bike
       expect(bike.working).to be true
